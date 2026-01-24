@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elderwood Game - Redirecting to Latest Version</title>
+    <!-- Meta tag for automatic redirect after 3 seconds -->
+    <meta http-equiv="refresh" content="1; url=https://aigsniperyt.github.io/elderwood-v5/">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌲</text></svg>">
+    
+    <!-- Open Graph tags for better sharing -->
+    <meta property="og:title" content="Elderwood - Latest Version">
+    <meta property="og:description" content="Redirecting to the latest version of Elderwood game">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1550745165-9bc0b252726f?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80">
+    <meta property="og:url" content="https://aigsniperyt.github.io/elderwood-redirect/">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #0f2b1a 0%, #1a3c29 100%);
+            color: #e8f5e9;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(0, 40, 0, 0.3) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(0, 60, 0, 0.2) 0%, transparent 20%);
+        }
+        
+        .container {
+            max-width: 800px;
+            width: 100%;
+            background-color: rgba(20, 30, 20, 0.85);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+            border: 2px solid rgba(100, 180, 100, 0.3);
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #4CAF50, #8BC34A, #CDDC39);
+        }
+        
+        h1 {
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+            color: #C8E6C9;
+            text-shadow: 0 2px 10px rgba(200, 230, 201, 0.3);
+            font-weight: 300;
+        }
+        
+        .game-title {
+            font-size: 3.8rem;
+            margin-bottom: 20px;
+            color: #81C784;
+            font-weight: 800;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            text-shadow: 0 0 20px rgba(129, 199, 132, 0.5);
+            position: relative;
+            display: inline-block;
+        }
+        
+        .game-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 25%;
+            width: 50%;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #4CAF50, transparent);
+        }
+        
+        .subtitle {
+            font-size: 1.4rem;
+            margin-bottom: 30px;
+            color: #A5D6A7;
+            font-weight: 300;
+        }
+        
+        .redirect-box {
+            background-color: rgba(30, 40, 30, 0.8);
+            border-radius: 15px;
+            padding: 30px;
+            margin: 30px 0;
+            border: 1px solid rgba(100, 180, 100, 0.4);
+            box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.3);
+            position: relative;
+        }
+        
+        .redirect-box::before {
+            content: '🔗';
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #1a3c29;
+            padding: 0 15px;
+            font-size: 1.5rem;
+        }
+        
+        .redirect-url {
+            display: block;
+            font-family: 'Courier New', monospace;
+            background-color: rgba(10, 20, 10, 0.8);
+            padding: 15px 25px;
+            border-radius: 10px;
+            margin: 20px 0;
+            overflow-x: auto;
+            white-space: nowrap;
+            color: #C5E1A5;
+            font-size: 1.2rem;
+            border: 1px solid rgba(100, 180, 100, 0.2);
+            word-break: break-all;
+        }
+        
+        .countdown {
+            font-size: 1.4rem;
+            margin: 25px 0;
+            color: #FFF9C4;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        #countdown-number {
+            font-weight: bold;
+            font-size: 2.2rem;
+            color: #FFEB3B;
+            min-width: 40px;
+            text-shadow: 0 0 10px rgba(255, 235, 59, 0.5);
+        }
+        
+        .loader {
+            width: 60px;
+            height: 60px;
+            border: 5px solid rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            border-top-color: #4CAF50;
+            animation: spin 1.2s ease-in-out infinite;
+            margin: 20px auto;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        .manual-link {
+            margin-top: 30px;
+            font-size: 1.1rem;
+        }
+        
+        .manual-link a {
+            display: inline-block;
+            background: linear-gradient(135deg, #4CAF50, #2E7D32);
+            color: white;
+            text-decoration: none;
+            padding: 16px 32px;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+            border: none;
+            cursor: pointer;
+            font-size: 1.2rem;
+            box-shadow: 0 5px 15px rgba(76, 175, 80, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .manual-link a:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(76, 175, 80, 0.6);
+        }
+        
+        .manual-link a:active {
+            transform: translateY(-1px);
+        }
+        
+        .manual-link a::after {
+            content: '🎮';
+            margin-left: 10px;
+        }
+        
+        .version-info {
+            background-color: rgba(40, 50, 40, 0.6);
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 35px;
+            border-left: 4px solid #81C784;
+        }
+        
+        .version-info h3 {
+            color: #A5D6A7;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .version-info h3::before {
+            content: '🔄';
+        }
+        
+        .instructions {
+            margin-top: 40px;
+            padding-top: 25px;
+            border-top: 1px solid rgba(200, 230, 200, 0.2);
+            font-size: 0.95rem;
+            color: #BDBDBD;
+            line-height: 1.6;
+        }
+        
+        footer {
+            margin-top: 40px;
+            color: #78909C;
+            font-size: 0.9rem;
+            text-align: center;
+        }
+        
+        .leaf-decoration {
+            position: absolute;
+            font-size: 2rem;
+            opacity: 0.3;
+            z-index: -1;
+        }
+        
+        .leaf-1 { top: 10%; left: 5%; transform: rotate(45deg); }
+        .leaf-2 { top: 15%; right: 8%; transform: rotate(-20deg); }
+        .leaf-3 { bottom: 20%; left: 7%; transform: rotate(70deg); }
+        .leaf-4 { bottom: 15%; right: 10%; transform: rotate(-60deg); }
+        
+        @media (max-width: 600px) {
+            .container {
+                padding: 25px 20px;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .game-title {
+                font-size: 2.5rem;
+            }
+            
+            .redirect-url {
+                font-size: 1rem;
+                padding: 12px 18px;
+                white-space: normal;
+                word-break: break-all;
+            }
+            
+            .countdown {
+                flex-direction: column;
+                gap: 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Decorative elements -->
+    <div class="leaf-decoration">🌿</div>
+    <div class="leaf-decoration leaf-2">🍃</div>
+    <div class="leaf-decoration leaf-3">🌱</div>
+    <div class="leaf-decoration leaf-4">🍂</div>
+    
+    <div class="container">
+        <h1>Welcome to</h1>
+        <div class="game-title">Elderwood</div>
+        <p class="subtitle">An epic adventure awaits...</p>
+        
+        <div class="redirect-box">
+            <p>You are being redirected to the latest version of the game.</p>
+            <p>This page always points to the most recent release.</p>
+            
+            <div class="loader"></div>
+            
+            <div class="countdown">
+                <span>Redirecting in</span>
+                <span id="countdown-number">1</span>
+                <span>seconds...</span>
+            </div>
+            
+            <p>Target URL:</p>
+            <span class="redirect-url" id="redirect-url">https://aigsniperyt.github.io/elderwood-v5/</span>
+        </div>
+        
+        <div class="manual-link">
+            <p>If you are not redirected automatically, click the button below:</p>
+            <a href="https://aigsniperyt.github.io/elderwood-v5/" id="redirect-link">Play Elderwood Now</a>
+        </div>
+        
+        <div class="version-info">
+            <h3>Version Information</h3>
+            <p>You're being redirected to: <strong>Elderwood v5</strong></p>
+            <p>This is the latest stable release. Bookmark this redirect page to always get the newest version.</p>
+        </div>
+        
+        <div class="instructions">
+            <p><strong>Note:</strong> This is a permanent redirect page for Elderwood. When version 6 is released, this page will be updated to redirect to the new version automatically.</p>
+            <p>Share this URL with friends: <strong>https://aigsniperyt.github.io/elderwood-redirect/</strong></p>
+        </div>
+    </div>
+    
+    <footer>
+        &copy; <span id="current-year"></span> Elderwood Game | Permanent Redirect Page
+    </footer>
+
+    <script>
+        // Update the year in footer
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+        
+        // Countdown timer
+        let countdownNumber = document.getElementById('countdown-number');
+        let countdown = 1;
+        
+        // Update countdown every second
+        const countdownInterval = setInterval(function() {
+            countdown--;
+            countdownNumber.textContent = countdown;
+            
+            if (countdown <= 0) {
+                clearInterval(countdownInterval);
+                // Optional: You could redirect immediately when countdown hits 0
+                // window.location.href = redirectUrl;
+            }
+        }, 1000);
+        
+        // The redirect URL (UPDATE THIS WHEN YOU RELEASE A NEW VERSION)
+        const redirectUrl = "https://aigsniperyt.github.io/elderwood-v5/";
+        
+        // Update URL display
+        document.getElementById('redirect-url').textContent = redirectUrl;
+        document.getElementById('redirect-link').href = redirectUrl;
+        
+        // Optional: Uncomment the line below if you want immediate redirect
+        // window.location.replace(redirectUrl);
+        
+        // Log for debugging
+        console.log("Elderwood Redirect Page");
+        console.log("Redirecting to: " + redirectUrl);
+        console.log("To update the version, change the redirectUrl variable in the script tag.");
+    </script>
+</body>
+</html>
