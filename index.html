@@ -3,366 +3,403 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Elderwood Game - Redirecting to Latest Version</title>
-    <!-- Meta tag for automatic redirect after 3 seconds -->
-    <meta http-equiv="refresh" content="1; url=https://aigsniperyt.github.io/elderwood-v5/">
-    
-    <!-- Favicon -->
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌲</text></svg>">
-    
-    <!-- Open Graph tags for better sharing -->
-    <meta property="og:title" content="Elderwood - Latest Version">
-    <meta property="og:description" content="Redirecting to the latest version of Elderwood game">
-    <meta property="og:image" content="https://images.unsplash.com/photo-1550745165-9bc0b252726f?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80">
-    <meta property="og:url" content="https://aigsniperyt.github.io/elderwood-redirect/">
-    
+    <title>EQUILIBRIUM — directing you</title>
+    <meta http-equiv="refresh" content="30; url=https://aigsniperyt.github.io/equilibrium-v6/">
+    <meta name="theme-color" content="#090705">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%23090705'/><text x='50' y='80' text-anchor='middle' font-size='70' fill='%23ffd98a'>&#9674;</text></svg>">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html, body { height: 100%; }
+
         body {
-            background: linear-gradient(135deg, #0f2b1a 0%, #1a3c29 100%);
-            color: #e8f5e9;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 20px;
-            background-image: 
-                radial-gradient(circle at 10% 20%, rgba(0, 40, 0, 0.3) 0%, transparent 20%),
-                radial-gradient(circle at 90% 80%, rgba(0, 60, 0, 0.2) 0%, transparent 20%);
-        }
-        
-        .container {
-            max-width: 800px;
-            width: 100%;
-            background-color: rgba(20, 30, 20, 0.85);
-            border-radius: 20px;
-            padding: 40px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
-            border: 2px solid rgba(100, 180, 100, 0.3);
-            backdrop-filter: blur(10px);
-            position: relative;
+            font-family: Georgia, 'Times New Roman', serif;
+            color: #fff3d6;
+            background: #090705;
+            background-attachment: fixed;
             overflow: hidden;
+            position: relative;
+            isolation: isolate;
         }
-        
-        .container::before {
-            content: '';
+
+        /* the boot splash backdrop: same layered glow as the in-game launch */
+        #splash {
+            position: fixed;
+            inset: 0;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: clamp(20px, 4.5vh, 38px);
+            padding: 24px;
+            text-align: center;
+            overflow: hidden;
+            background:
+                radial-gradient(circle at 50% 44%, rgba(255, 228, 170, 0.09), transparent 27%),
+                radial-gradient(circle at 16% 12%, rgba(255, 183, 89, 0.06), transparent 24%),
+                radial-gradient(circle at 84% 84%, rgba(255, 238, 198, 0.045), transparent 26%),
+                linear-gradient(180deg, #1a120b 0%, #0c0a07 48%, #070504 100%);
+        }
+
+        /* halo ring, flush centre — as in the splash */
+        #splash::before {
+            content: "";
             position: absolute;
+            z-index: -1;
+            width: min(76vw, 840px);
+            aspect-ratio: 1;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -54%);
+            border: 1px solid rgba(255, 224, 164, 0.16);
+            border-radius: 50%;
+            box-shadow:
+                inset 0 0 70px rgba(255, 222, 160, 0.045),
+                0 0 92px rgba(255, 190, 94, 0.07);
+            animation: halo-breathe 7s ease-in-out infinite;
+        }
+
+        /* faint screen-blend grid, splashed over everything */
+        #splash::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            z-index: -1;
+            background-image:
+                linear-gradient(rgba(255, 242, 214, 0.018) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 242, 214, 0.013) 1px, transparent 1px);
+            background-size: 3px 3px, 5px 5px;
+            mix-blend-mode: screen;
+            pointer-events: none;
+        }
+
+        /* title, splice of gold-washed gradient + faint stroke — splash exact */
+        .splash-title {
+            max-width: calc(100vw - 36px);
+            font-family: Cinzel, 'Palatino Linotype', 'Book Antiqua', Georgia, 'Times New Roman', serif;
+            font-size: clamp(36px, 7.5vw, 82px);
+            font-variant: small-caps;
+            font-weight: 700;
+            letter-spacing: 0.24em;
+            text-indent: 0.24em;
+            line-height: 0.95;
+            color: #fff4d4;
+            background: linear-gradient(180deg, #fff9e6 0%, #ffe7a7 31%, #d79541 53%, #fff0bf 77%, #f5bd67 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            text-shadow:
+                0 1px 0 rgba(77, 42, 10, 0.86),
+                0 0 12px rgba(255, 244, 200, 0.78),
+                0 0 34px rgba(255, 203, 118, 0.42),
+                0 0 82px rgba(255, 179, 74, 0.2);
+        }
+
+        .s-ornament {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 18px;
+            width: min(460px, 76vw);
+            color: rgba(255, 231, 172, 0.94);
+            font-size: 13px;
+            line-height: 1;
+            text-shadow:
+                0 0 9px rgba(255, 232, 174, 0.72),
+                0 0 24px rgba(255, 179, 72, 0.26);
+        }
+        .s-ornament::before,
+        .s-ornament::after {
+            content: "";
+            display: block;
+            flex: 1;
+            height: 1px;
+            box-shadow: 0 0 10px rgba(255, 218, 150, 0.34);
+        }
+        .s-ornament::before { background: linear-gradient(90deg, transparent, rgba(255, 218, 150, 0.28), rgba(255, 243, 202, 0.86)); }
+        .s-ornament::after  { background: linear-gradient(90deg, rgba(255, 243, 202, 0.86), rgba(255, 218, 150, 0.28), transparent); }
+
+        .s-tagline {
+            font-family: 'Palatino Linotype', 'Book Antiqua', Georgia, 'Times New Roman', serif;
+            font-size: clamp(14px, 2.2vw, 18px);
+            font-style: italic;
+            letter-spacing: 0.12em;
+            color: rgba(255, 239, 203, 0.9);
+            text-shadow:
+                0 0 10px rgba(255, 231, 174, 0.45),
+                0 0 30px rgba(255, 176, 78, 0.18);
+        }
+
+        /* raised motes — same material as splash-mote */
+        .mote {
+            position: absolute;
+            z-index: 0;
+            border-radius: 50%;
+            background: radial-gradient(
+                circle,
+                rgba(255, 248, 220, 0.96),
+                rgba(255, 205, 120, 0.52) 55%,
+                rgba(255, 180, 90, 0) 75%
+            );
+            box-shadow: 0 0 8px 2px rgba(255, 210, 140, 0.5);
+            pointer-events: none;
+            animation: mote-rise ease-in-out infinite;
+        }
+
+        /* loading line — a soul-essence fill, not a countdown */
+        .loader {
+            position: relative;
+            z-index: 1;
+            width: min(430px, calc(100vw - 44px));
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            text-align: center;
+        }
+        .loader-rail {
+            position: relative;
+            height: 3px;
+            background: linear-gradient(90deg, rgba(255, 250, 244, 0.06), rgba(255, 250, 244, 0.16));
+            box-shadow:
+                inset 0 0 6px rgba(255, 250, 244, 0.18),
+                0 0 10px rgba(255, 226, 150, 0.10);
+        }
+        .loader-fill {
+            position: absolute;
+            left: 0;
             top: 0;
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, rgba(255, 240, 200, 0.6), #ffe9b8, #ffd98a);
+            box-shadow:
+                0 0 10px rgba(255, 217, 138, 0.85),
+                0 0 26px rgba(255, 203, 118, 0.45);
+            transition: width 0.9s ease-out;
+        }
+        /* shimmer travelling down the loaded length */
+        .loader-fill::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(90deg, transparent, rgba(255, 252, 244, 0.85), transparent);
+            background-size: 60% 100%;
+            background-repeat: no-repeat;
+            animation: loader-sheen 1.8s linear infinite;
+        }
+        .loader-msg {
+            font-size: 13px;
+            letter-spacing: 0.14em;
+            color: rgba(255, 244, 214, 0.78);
+            text-shadow: 0 0 10px rgba(255, 226, 150, 0.35);
+            font-style: italic;
+            min-height: 1.4em;
+            transition: opacity 0.3s ease;
+        }
+        .loader-pct {
+            font-family: Consolas, 'Courier New', monospace;
+            font-size: 11px;
+            letter-spacing: 0.22em;
+            color: rgba(255, 240, 210, 0.4);
+        }
+        .loader-pct b {
+            color: rgba(255, 233, 184, 0.7);
+            font-weight: 700;
+            margin-right: 0.6em;
+            border-right: 1px solid rgba(255, 233, 184, 0.18);
+            padding-right: 0.6em;
+        }
+
+        /* quiet skip link, styled like the in-game changelog link */
+        .skip {
+            position: relative;
+            z-index: 1;
+            font-size: 12px;
+            font-style: italic;
+            letter-spacing: 0.1em;
+            color: rgba(232, 212, 138, 0.55);
+            text-decoration: none;
+            border-bottom: 1px solid rgba(232, 212, 138, 0.3);
+            padding-bottom: 1px;
+            transition: color .25s ease, text-shadow .25s ease;
+        }
+        .skip:hover {
+            color: #fff8ee;
+            text-shadow: 0 0 10px rgba(232, 212, 138, 0.5);
+        }
+
+        /* footer credit — echo of the launch credit line */
+        .credit {
+            position: fixed;
             left: 0;
             right: 0;
-            height: 5px;
-            background: linear-gradient(90deg, #4CAF50, #8BC34A, #CDDC39);
-        }
-        
-        h1 {
-            font-size: 2.8rem;
-            margin-bottom: 10px;
-            color: #C8E6C9;
-            text-shadow: 0 2px 10px rgba(200, 230, 201, 0.3);
-            font-weight: 300;
-        }
-        
-        .game-title {
-            font-size: 3.8rem;
-            margin-bottom: 20px;
-            color: #81C784;
-            font-weight: 800;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            text-shadow: 0 0 20px rgba(129, 199, 132, 0.5);
-            position: relative;
-            display: inline-block;
-        }
-        
-        .game-title::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 25%;
-            width: 50%;
-            height: 3px;
-            background: linear-gradient(90deg, transparent, #4CAF50, transparent);
-        }
-        
-        .subtitle {
-            font-size: 1.4rem;
-            margin-bottom: 30px;
-            color: #A5D6A7;
-            font-weight: 300;
-        }
-        
-        .redirect-box {
-            background-color: rgba(30, 40, 30, 0.8);
-            border-radius: 15px;
-            padding: 30px;
-            margin: 30px 0;
-            border: 1px solid rgba(100, 180, 100, 0.4);
-            box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.3);
-            position: relative;
-        }
-        
-        .redirect-box::before {
-            content: '🔗';
-            position: absolute;
-            top: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: #1a3c29;
-            padding: 0 15px;
-            font-size: 1.5rem;
-        }
-        
-        .redirect-url {
-            display: block;
-            font-family: 'Courier New', monospace;
-            background-color: rgba(10, 20, 10, 0.8);
-            padding: 15px 25px;
-            border-radius: 10px;
-            margin: 20px 0;
-            overflow-x: auto;
-            white-space: nowrap;
-            color: #C5E1A5;
-            font-size: 1.2rem;
-            border: 1px solid rgba(100, 180, 100, 0.2);
-            word-break: break-all;
-        }
-        
-        .countdown {
-            font-size: 1.4rem;
-            margin: 25px 0;
-            color: #FFF9C4;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-        }
-        
-        #countdown-number {
-            font-weight: bold;
-            font-size: 2.2rem;
-            color: #FFEB3B;
-            min-width: 40px;
-            text-shadow: 0 0 10px rgba(255, 235, 59, 0.5);
-        }
-        
-        .loader {
-            width: 60px;
-            height: 60px;
-            border: 5px solid rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            border-top-color: #4CAF50;
-            animation: spin 1.2s ease-in-out infinite;
-            margin: 20px auto;
-        }
-        
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
-        
-        .manual-link {
-            margin-top: 30px;
-            font-size: 1.1rem;
-        }
-        
-        .manual-link a {
-            display: inline-block;
-            background: linear-gradient(135deg, #4CAF50, #2E7D32);
-            color: white;
-            text-decoration: none;
-            padding: 16px 32px;
-            border-radius: 50px;
-            font-weight: bold;
-            transition: all 0.3s ease;
-            margin-top: 10px;
-            border: none;
-            cursor: pointer;
-            font-size: 1.2rem;
-            box-shadow: 0 5px 15px rgba(76, 175, 80, 0.4);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .manual-link a:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(76, 175, 80, 0.6);
-        }
-        
-        .manual-link a:active {
-            transform: translateY(-1px);
-        }
-        
-        .manual-link a::after {
-            content: '🎮';
-            margin-left: 10px;
-        }
-        
-        .version-info {
-            background-color: rgba(40, 50, 40, 0.6);
-            border-radius: 10px;
-            padding: 20px;
-            margin-top: 35px;
-            border-left: 4px solid #81C784;
-        }
-        
-        .version-info h3 {
-            color: #A5D6A7;
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-        }
-        
-        .version-info h3::before {
-            content: '🔄';
-        }
-        
-        .instructions {
-            margin-top: 40px;
-            padding-top: 25px;
-            border-top: 1px solid rgba(200, 230, 200, 0.2);
-            font-size: 0.95rem;
-            color: #BDBDBD;
-            line-height: 1.6;
-        }
-        
-        footer {
-            margin-top: 40px;
-            color: #78909C;
-            font-size: 0.9rem;
+            bottom: 14px;
+            z-index: 1;
             text-align: center;
+            font-size: 12px;
+            font-style: italic;
+            letter-spacing: 0.12em;
+            color: rgba(255, 239, 203, 0.28);
+            text-shadow: 0 0 10px rgba(255, 231, 174, 0.18);
         }
-        
-        .leaf-decoration {
-            position: absolute;
-            font-size: 2rem;
-            opacity: 0.3;
-            z-index: -1;
+
+        @keyframes halo-breathe {
+            0%, 100% { transform: translate(-50%, -54%) scale(1); opacity: 0.8; }
+            50%      { transform: translate(-50%, -54%) scale(1.04); opacity: 1; }
         }
-        
-        .leaf-1 { top: 10%; left: 5%; transform: rotate(45deg); }
-        .leaf-2 { top: 15%; right: 8%; transform: rotate(-20deg); }
-        .leaf-3 { bottom: 20%; left: 7%; transform: rotate(70deg); }
-        .leaf-4 { bottom: 15%; right: 10%; transform: rotate(-60deg); }
-        
-        @media (max-width: 600px) {
-            .container {
-                padding: 25px 20px;
-            }
-            
-            h1 {
-                font-size: 2rem;
-            }
-            
-            .game-title {
-                font-size: 2.5rem;
-            }
-            
-            .redirect-url {
-                font-size: 1rem;
-                padding: 12px 18px;
-                white-space: normal;
-                word-break: break-all;
-            }
-            
-            .countdown {
-                flex-direction: column;
-                gap: 5px;
-            }
+        @keyframes mote-rise {
+            0%   { transform: translateY(0) translateX(0); opacity: 0; }
+            24%  { opacity: 0.85; }
+            48%  { transform: translateY(-14vh) translateX(var(--curl, 18px)); opacity: 0.75; }
+            100% { transform: translateY(-30vh) translateX(var(--drift, 16px)); opacity: 0; }
+        }
+        @keyframes loader-sheen {
+            0%   { background-position: -60% 0; }
+            100% { background-position: 160% 0; }
+        }
+
+        noscript { display: block; padding: 12px; font-size: 13px; }
+
+        @media (max-width: 560px) {
+            #splash { gap: 20px; padding: 18px; }
+            .splash-title { font-size: clamp(30px, 12vw, 48px); letter-spacing: 0.14em; text-indent: 0.14em; }
         }
     </style>
 </head>
 <body>
-    <!-- Decorative elements -->
-    <div class="leaf-decoration">🌿</div>
-    <div class="leaf-decoration leaf-2">🍃</div>
-    <div class="leaf-decoration leaf-3">🌱</div>
-    <div class="leaf-decoration leaf-4">🍂</div>
-    
-    <div class="container">
-        <h1>Welcome to</h1>
-        <div class="game-title">Elderwood</div>
-        <p class="subtitle">An epic adventure awaits...</p>
-        
-        <div class="redirect-box">
-            <p>You are being redirected to the latest version of the game.</p>
-            <p>This page always points to the most recent release.</p>
-            
-            <div class="loader"></div>
-            
-            <div class="countdown">
-                <span>Redirecting in</span>
-                <span id="countdown-number">1</span>
-                <span>seconds...</span>
-            </div>
-            
-            <p>Target URL:</p>
-            <span class="redirect-url" id="redirect-url">https://aigsniperyt.github.io/elderwood-v5/</span>
-        </div>
-        
-        <div class="manual-link">
-            <p>If you are not redirected automatically, click the button below:</p>
-            <a href="https://aigsniperyt.github.io/elderwood-v5/" id="redirect-link">Play Elderwood Now</a>
-        </div>
-        
-        <div class="version-info">
-            <h3>Version Information</h3>
-            <p>You're being redirected to: <strong>Elderwood v5</strong></p>
-            <p>This is the latest stable release. Bookmark this redirect page to always get the newest version.</p>
-        </div>
-        
-        <div class="instructions">
-            <p><strong>Note:</strong> This is a permanent redirect page for Elderwood. When version 6 is released, this page will be updated to redirect to the new version automatically.</p>
-            <p>Share this URL with friends: <strong>https://aigsniperyt.github.io/elderwood-redirect/</strong></p>
-        </div>
+    <div id="splash">
+        <h1 class="splash-title" id="title">EQUILIBRIUM</h1>
+        <div class="s-ornament">&#9674;</div>
+        <p class="s-tagline">light condensed from darkness &mdash; directing you to the newest build</p>
+
+        <section class="loader">
+            <div class="loader-rail"><div class="loader-fill" id="fill"></div></div>
+            <p class="loader-msg" id="msg">soul settling into density</p>
+            <p class="loader-pct"><b class="ver" id="ver">v6</b><span id="pct">0&thinsp;%</span></p>
+        </section>
+
+        <a class="skip" id="go" href="https://aigsniperyt.github.io/equilibrium-v6/">or step through now</a>
+
+        <noscript>
+            <p style="color:rgba(255,239,203,.7);font-style:italic">Javascript is needed for the loading &mdash;
+            <a href="https://aigsniperyt.github.io/equilibrium-v6/" style="color:#ffe9b8">step through directly</a>.</p>
+        </noscript>
     </div>
-    
-    <footer>
-        &copy; <span id="current-year"></span> Elderwood Game | Permanent Redirect Page
-    </footer>
+
+    <footer class="credit">made with care &middot; by AIGsniper</footer>
 
     <script>
-        // Update the year in footer
-        document.getElementById('current-year').textContent = new Date().getFullYear();
-        
-        // Countdown timer
-        let countdownNumber = document.getElementById('countdown-number');
-        let countdown = 1;
-        
-        // Update countdown every second
-        const countdownInterval = setInterval(function() {
-            countdown--;
-            countdownNumber.textContent = countdown;
-            
-            if (countdown <= 0) {
-                clearInterval(countdownInterval);
-                // Optional: You could redirect immediately when countdown hits 0
-                // window.location.href = redirectUrl;
+        const BASE = "https://aigsniperyt.github.io/equilibrium-v";
+        const DEFAULT_VERSION = 6;
+        const DURATION = 3000; // ms before stepping through
+        const el = {
+            go: document.getElementById("go"),
+            fill: document.getElementById("fill"),
+            pct: document.getElementById("pct"),
+            msg: document.getElementById("msg"),
+            ver: document.getElementById("ver")
+        };
+
+        function setTarget(v) {
+            const u = BASE + v + "/";
+            el.go.href = u;
+            el.ver.textContent = "v" + v;
+        }
+
+        // organic ease-in-out fill, not a ticking clock
+        const LINES = [
+            "entropy never stops so neither can you",
+            "keep your patience when suffering asks for it",
+            "only one of you remembers the wrong turn",
+            "white is what the storm settles into",
+            "lily maru cuts neither too much nor too little",
+            "matter is condensed soul given lasting form",
+            "holding balance is harder than finding it",
+            "soul condenses where density is made",
+            "light settles where soul grows dense",
+            "a wrong turn remembered need not be repeated",
+            "the end can be refused quietly",
+            "what is held together can still be moving",
+            "the void is felt where soul grows sparse",
+            "form follows the soul that holds it",
+            "some wounds heal before they are forgotten",
+            "patience is easier to keep than to recover",
+            "equilibrium is kept not found",
+            "condensing soul into density",
+            "reversing entropy",
+            "settling light into form",
+            "holding soul and void in balance",
+            "remembering what the soul already survived",
+            "the second chance remembers what you cannot undo",
+            "too much breaks what too little cannot hold",
+            "a steady hand leaves room for balance",
+            "the soul holds what the body cannot",
+            "what survives the storm need not remain dark"
+        ];
+
+        const pool = LINES.slice();
+        function popNext() {
+            if (!pool.length) pool.push.apply(pool, LINES);
+            const i = Math.floor(Math.random() * pool.length);
+            return pool.splice(i, 1)[0];
+        }
+        const msgEl = el.msg;
+        msgEl.style.opacity = "0";
+        setTimeout(() => {
+            msgEl.textContent = popNext();
+            msgEl.style.opacity = "1";
+        }, 300);
+
+        function run() {
+            const fillEl = el.fill;
+            const pctEl = el.pct;
+            const t0 = performance.now();
+            (function step(now) {
+                const t = Math.min(1, (now - t0) / DURATION);
+                const eased = t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
+                fillEl.style.width = (eased * 100) + "%";
+                pctEl.textContent = Math.round(eased * 100) + "%";
+                if (t < 1) {
+                    requestAnimationFrame(step);
+                } else {
+                    location.replace(el.go.href);
+                }
+            })(t0);
+        }
+
+        if (window.fetch) {
+            const queue = [];
+            for (let v = DEFAULT_VERSION; v >= 1; v--) {
+                queue.push(fetch(BASE + v + "/", { method: "HEAD", cache: "no-store" }).then(r => (r.ok || r.status === 0) ? v : null).catch(() => null));
             }
-        }, 1000);
-        
-        // The redirect URL (UPDATE THIS WHEN YOU RELEASE A NEW VERSION)
-        const redirectUrl = "https://aigsniperyt.github.io/elderwood-v5/";
-        
-        // Update URL display
-        document.getElementById('redirect-url').textContent = redirectUrl;
-        document.getElementById('redirect-link').href = redirectUrl;
-        
-        // Optional: Uncomment the line below if you want immediate redirect
-        // window.location.replace(redirectUrl);
-        
-        // Log for debugging
-        console.log("Elderwood Redirect Page");
-        console.log("Redirecting to: " + redirectUrl);
-        console.log("To update the version, change the redirectUrl variable in the script tag.");
+            Promise.all(queue).then(results => {
+                setTarget(results.reduce((m, v) => v != null ? Math.max(m, v) : m, DEFAULT_VERSION));
+                run();
+            }).catch(() => { setTarget(DEFAULT_VERSION); run(); });
+        } else {
+            setTarget(DEFAULT_VERSION);
+            run();
+        }
+
+        // spawn drifting motes the way the boot splash does
+        const splash = document.getElementById("splash");
+        for (let i = 0; i < 20; i++) {
+            const mote = document.createElement("span");
+            mote.className = "mote";
+            const size = 3 + Math.random() * 5;
+            const curl = -28 + Math.random() * 56;
+            const drift = -18 + Math.random() * 36;
+            mote.style.width = size + "px";
+            mote.style.height = size + "px";
+            mote.style.setProperty("--curl", curl + "px");
+            mote.style.setProperty("--drift", drift + "px");
+            mote.style.left = (2 + Math.random() * 96) + "%";
+            mote.style.top = (18 + Math.random() * 64) + "%";
+            mote.style.animationDuration = (4.4 + Math.random() * 1.6) + "s";
+            mote.style.animationDelay = (Math.random() * 5) + "s";
+            splash.appendChild(mote);
+        }
     </script>
 </body>
 </html>
